@@ -1,3 +1,4 @@
+# Generates unique 6 digit/character key
 import string
 import random
 def id_generator( ):
