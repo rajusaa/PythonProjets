@@ -16,7 +16,7 @@ import smtplib
 import random
 
 MY_EMAIL = 'santoshkumar.skr1@gmail.com'
-MY_PASSWORD = '----' # fill in the password 
+MY_PASSWORD = '----' # fill in the password
 
 
 def sendemail(vname, vemail):
