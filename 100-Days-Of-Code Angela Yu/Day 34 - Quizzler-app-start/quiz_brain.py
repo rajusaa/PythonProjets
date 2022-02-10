@@ -12,10 +12,13 @@ class QuizBrain:
         return self.question_number < len(self.question_list)
 
     def next_question(self):
-        self.current_question = self.question_list[self.question_number]
-        self.question_number += 1
-        quiz_text = html.unescape(self.current_question.text)
-        return quiz_text
+        if self.still_has_questions():
+            self.current_question = self.question_list[self.question_number]
+            self.question_number += 1
+            quiz_text = html.unescape(self.current_question.text)
+            return quiz_text
+        else:
+            pass #self.canvas.itemconfig(self.create_text='End of quiz')
         #user_answer = input(f"Q.{self.question_number}: {quiz_text} (True/False): ")
         #self.check_answer(user_answer)
 

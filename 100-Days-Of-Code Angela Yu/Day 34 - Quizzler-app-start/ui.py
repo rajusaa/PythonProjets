@@ -43,27 +43,21 @@ class UserInterface():
         self.window.mainloop()
 
     def next_question(self):
+        self.canvas.config(bg='white')
+        self.label.config(text=f"Score:{self.score}")
         question = self.quiz.next_question()
         self.canvas.itemconfig(self.create_text, text=question)
 
     def verify_true_answer(self):
-        answer = self.quiz.check_answer()
-        if answer:
-            self.score += 1
-            self.task_id = self.window.after(1000,self.canvas.config(background='Green'))
-            self.window.after_cancel(self,self.task_id)
-            self.label.config(text=f"Score:{self.score}")
-            self.next_question()
-        else:
-            self.next_question()
+        self.give_feedback(self.quiz.check_answer('True'))
 
     def verify_false_answer(self):
-        answer = self.quiz.check_answer()
-        if not answer:
-            self.score += 1
-            self.label.config(text=f"Score:{self.score}")
-            self.next_question()
-        else:
-            self.next_question()
+        self.give_feedback(self.quiz.check_answer('False'))
 
-    def is_right(self):
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg='green')
+            self.score+=1
+        else:
+            self.canvas.config(bg='red')
+        self.window.after(1000, self.next_question)
