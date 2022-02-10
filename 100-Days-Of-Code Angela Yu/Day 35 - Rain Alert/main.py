@@ -2,7 +2,7 @@
 
 
 import requests
-API_KEY = '45149a0dba0cec2b9d8779aa5f97be35'
+API_KEY = 'XXXXXXXXXXXXXXXX' #API KEY should be updated
 URL = 'https://api.openweathermap.org/data/2.5/onecall'
 EXCLUDE = 'daily,minutely'
 
